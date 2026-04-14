@@ -62,6 +62,7 @@ services:
 
   # Backend API Service
   backend:
+    image: dockerized-chat-app-backend
     build:
       context: ./backend
       dockerfile: Dockerfile
@@ -88,6 +89,7 @@ services:
 
   # Frontend Service
   frontend:
+    image: dockerized-chat-app-frontend
     build:
       context: ./frontend
       dockerfile: Dockerfile

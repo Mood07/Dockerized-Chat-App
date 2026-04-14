@@ -1,10 +1,9 @@
 ﻿# 🐳 Dockerized Chat Application
 
-Grade 5.0 Project — Cloud‑oriented Web Applications Course
-
 A fully containerized, real‑time chat application using React (frontend), Node.js/Express (backend), MongoDB, Apache Kafka, and WebSockets. Everything runs with Docker Compose.
 
 ## Changelog
+
 - Bug fixes applied to UI refresh, friend requests title duplication, and auth page background.
 
 ---
@@ -119,7 +118,7 @@ docker-compose up -d --build
 First boot may take ~1–2 minutes (Kafka startup). Then open:
 
 - Frontend: http://localhost:3000
-- Health:   http://localhost:5000/health
+- Health: http://localhost:5000/health
 
 Stop / clean:
 
@@ -132,13 +131,14 @@ docker-compose down -v     # containers + volumes (fresh DB)
 
 ## 💬 Usage
 
-1) Register then Login (username + password)
-2) “All Users” → Add to send friend requests
-3) “Friend Requests” (receiver) → Accept; friend moves to “Friends”
-4) Click a friend to open a private chat
-5) “Global Chat” item under Friends opens the public room
+1. Register then Login (username + password)
+2. “All Users” → Add to send friend requests
+3. “Friend Requests” (receiver) → Accept; friend moves to “Friends”
+4. Click a friend to open a private chat
+5. “Global Chat” item under Friends opens the public room
 
 Notes:
+
 - Friend requests are polled every 5s, so they appear without manual refresh
 - Sender‑side duplicate messages are avoided (WS de‑dup)
 
@@ -147,19 +147,23 @@ Notes:
 ## 🔌 API Endpoints
 
 - Auth
+
   - POST `/api/auth/register` — { username, password }
   - POST `/api/auth/login` — { username, password } → { token }
 
 - Messages (JWT)
+
   - GET `/api/messages`
   - POST `/api/messages` — { text, roomId: "general" }
   - DELETE `/api/messages` — testing only
 
 - Private Messages (JWT)
+
   - GET `/api/private/:roomId`
   - POST `/api/private/:roomId` — { text }
 
 - Friends (JWT)
+
   - GET `/api/friends/users` — all users except current
   - POST `/api/friends/request` — { to }
   - GET `/api/friends/requests` — pending for me
@@ -191,3 +195,11 @@ Notes:
 - If base image pulls fail (DNS/proxy), configure DNS/proxy or pull manually:
   - `docker pull node:18-alpine`
   - `docker pull nginx:alpine`
+
+---
+
+## 👨‍💻 Author
+
+**Berke Arda Türk**  
+Data Science & AI Enthusiast | Computer Science (B.ASc)  
+[🌐 Portfolio Website](https://berkeardaturk.com) • [💼 LinkedIn](https://www.linkedin.com/in/berke-arda-turk/) • [🐙 GitHub](https://github.com/Mood07)
